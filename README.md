@@ -1,16 +1,12 @@
-# Template
+# Speech Emotion Conversion using Generative Neural Networks
 
-To create a GitHub page, follow these steps:
+![UHH Logo](/assets/img/uhh_logo.svg)
 
-* Create a new repo under <code>https://github.com/sp-uhh/project_name</code> using the [https://github.com/sp-uhh/website_template template repo].
-* In <code>_config.yml</code>, set baseurl to <code>/project_name/</code>.
-* In <code>_config.yml</code>, adopt title, logo, and description.
-* In <code>_layouts/default.html</code> in line 28, replace <code>website_template</code> with <code>project_name</code>.
+## Description
 
-# Activate
+A research website showcasing speech emotion conversion using generative neural networks. The project demonstrates how deep learning models can transform the emotional tone of speech, with audio samples illustrating emotion conversion results. Explore project details, listen to emotion transformation examples, and find related resources.
 
-* On your GitHub repository, navigate to the Settings tab.
-* In the left sidebar, click on Pages.
-* Under the Source section, find the Branch dropdown.
-* Select main (or your preferred branch) from the dropdown menu.
-* Click the Save button.
+## License
+
+This project is for research and educational purposes.
+
