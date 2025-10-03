@@ -124,14 +124,14 @@ layout: default
 </h1>
 
 <p>
-    * WEBSITE CONSTRUCTION IN PROGRESS *. 
+    Speech Emotion Conversion aims to modify the emotion expressed in input speech while preserving lexical content and speaker identity. Recently, generative modeling approaches have shown promising results in changing local acoustic properties such as fundamental frequency, spectral envelope and energy, but often lack the ability to control the duration of sounds. To address this, we propose a duration modeling framework using resynthesis-based discrete content representations, enabling modification of speech duration to reflect target emotions and achieve controllable speech rates without using parallel data. Experimental results reveal that the inclusion of the proposed duration modeling framework significantly enhances emotional expressiveness, in the in-the-wild MSP-Podcast dataset. Analyses show that low-arousal emotions correlate with longer durations and slower speech rates, while high-arousal emotions produce shorter, faster speech. 
 </p>
 
 <h2>
     Audio Examples
 </h2>
 
-<p>
+<!-- <p>
     p002/emo_adoration_sentences.wav<br>
     <audio controls>
         <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p002_emo_adoration_sentences.wav" type="audio/wav">
@@ -152,96 +152,81 @@ layout: default
         Your browser does not support the audio element.
     </audio>
     <br>
-</p>
+</p> -->
 
-<h3>
+<!-- <h3>
     With dropdown menu 
-</h3>
+</h3> -->
 
 <p>Select an audio file: &nbsp;&nbsp;
     <select id="audioSelect" onchange="playAudio()">
-        <option value="p102/00252_4.9dB">p102/00252_4.9dB</option>
-    <option value="p103/00464_11.8dB">p103/00464_11.8dB</option>
-    <option value="p104/00814_11.3dB">p104/00814_11.3dB</option>
-    <option value="p105/00735_0.4dB">p105/00735_0.4dB</option>
-    <option value="p106/00049_5.4dB">p106/00049_5.4dB</option>
-    <option value="p107/00519_8.1dB">p107/00519_8.1dB</option>
+        <option value="msp_podcast_0003_0442">msp_podcast_0003_0442</option>
+    <option value="msp_podcast_0202_0002">msp_podcast_0202_0002</option>
+    <option value="msp_podcast_0202_0002">msp_podcast_0202_0002</option>
+    <option value="msp_podcast_2329_1765">msp_podcast_2329_1765</option>
+    <!-- <option value="p106/00049_5.4dB">p106/00049_5.4dB</option>
+    <option value="p107/00519_8.1dB">p107/00519_8.1dB</option> -->
     </select>
 </p>
 
+<!-- Below is for default Audio Sample Selection setup -->
 <p>
-    Noisy: <br>
-    <audio id="audioPlayerNoisy" controls>
-        <source id="audioSourceNoisy" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/noisy/p102/00252_4.9dB.wav" type="audio/wav">
+    Ground-truth Audio: <br>
+    <audio id="audioPlayerGT" controls>
+        <source id="audioPlayerGT" src="https://www2.informatik.uni-hamburg.de/sp/public/audio/publications/asru2025_durmodel/files/msppod/durmodel/gt/msp_podcast_0003_0442.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio><br>
 
-    Conv-TasNet <span class="reference" data-ref="convtasnet"></span>:<br>
-    <audio id="audioPlayerConvTasNet" controls>
-        <source id="audioSourceConvTasNet" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav" type="audio/wav">
+    <h2>
+        Emotion Converted Speech
+    </h2>
+
+    Low Arousal: 1 <span class="reference" data-ref="low-arousal"></span>:<br>
+    <audio id="audioPlayerLowArousal" controls>
+        <source id="audioPlayerLowArousal" src="https://www2.informatik.uni-hamburg.de/sp/public/audio/publications/asru2025_durmodel/files/msppod/durmodel/arous1/msp_podcast_0003_0442.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio><br>
 
-    CDiffuSE <span class="reference" data-ref="cdiffuse"></span>:<br>
-    <audio id="audioPlayerCDiffuSE" controls>
-        <source id="audioSourceCDiffuSE" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/cdiffuse/p102/00252_4.9dB.wav" type="audio/wav">
+    Low Arousal: 4 <span class="reference" data-ref="med-arousal"></span>:<br>
+    <audio id="audioPlayerMedArousal" controls>
+        <source id="audioPlayerMedArousal" src="https://www2.informatik.uni-hamburg.de/sp/public/audio/publications/asru2025_durmodel/files/msppod/durmodel/arous4/msp_podcast_0003_0442.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio><br>
 
-    Demucs <span class="reference" data-ref="demucs"></span>:<br>
-    <audio id="audioPlayerDemucs" controls>
-        <source id="audioSourceDemucs" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/demucs/p102/00252_4.9dB.wav" type="audio/wav">
-        Your browser does not support the audio element.
-    </audio><br>
-
-    SGMSE+ <span class="reference" data-ref="sgmse"></span>:<br>
-    <audio id="audioPlayerSGMSE" controls>
-        <source id="audioSourceSGMSE" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/sgmse/p102/00252_4.9dB.wav" type="audio/wav">
-        Your browser does not support the audio element.
-    </audio><br>
-
-    Clean: <br>
-    <audio id="audioPlayerClean" controls>
-        <source id="audioSourceClean" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/clean/p102/00252_4.9dB.wav" type="audio/wav">
+    Low Arousal: 7 <span class="reference" data-ref="high-arousal"></span>:<br>
+    <audio id="audioPlayerHighArousal" controls>
+        <source id="audioPlayerHighArousal" src="https://www2.informatik.uni-hamburg.de/sp/public/audio/publications/asru2025_durmodel/files/msppod/durmodel/arous7/msp_podcast_0003_0442.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio>
 </p>
 
 <script>
     function playAudio() {
-        var audioPlayerNoisy = document.getElementById('audioPlayerNoisy');
-        var audioPlayerConvTasNet = document.getElementById('audioPlayerConvTasNet');
-        var audioPlayerCDiffuSE = document.getElementById('audioPlayerCDiffuSE');
-        var audioPlayerDemucs = document.getElementById('audioPlayerDemucs');
-        var audioPlayerSGMSE = document.getElementById('audioPlayerSGMSE');
-        var audioPlayerClean = document.getElementById('audioPlayerClean');
-        var audioSourceNoisy = document.getElementById('audioSourceNoisy');
-        var audioSourceConvTasNet = document.getElementById('audioSourceConvTasNet');
-        var audioSourceCDiffuSE = document.getElementById('audioSourceCDiffuSE');
-        var audioSourceDemucs = document.getElementById('audioSourceDemucs');
-        var audioSourceSGMSE = document.getElementById('audioSourceSGMSE');
-        var audioSourceClean = document.getElementById('audioSourceClean');
+        var audioPlayerGT = document.getElementById('audioPlayerGT');
+        var audioPlayerLowArousal = document.getElementById('audioPlayerLowArousal');
+        var audioPlayerMedArousal = document.getElementById('audioPlayerMedArousal');
+        var audioPlayerHighArousal = document.getElementById('audioPlayerHighArousal');
+
+        var audioSourceGT = document.getElementById('audioSourceGT');
+        var audioSourceLowArousal = document.getElementById('audioSourceLowArousal');
+        var audioSourceMedArousal = document.getElementById('audioSourceMedArousal');
+        var audioSourceHighArousal = document.getElementById('audioSourceHighArousal');
+
         var selectedAudio = document.getElementById('audioSelect').value;
 
         if (selectedAudio) {
             // Set the source of the source elements, not the audio players
-            audioSourceNoisy.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/noisy/" + selectedAudio + ".wav";
-            audioPlayerNoisy.load(); // Load the selected audio file using the audio player
+            audioSourceGT.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/asru2025_durmodel/files/msppod/durmodel/gt/" + selectedAudio + ".wav";
+            audioPlayerGT.load(); // Load the selected audio file using the audio player
 
-            audioSourceConvTasNet.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/" + selectedAudio + ".wav";
-            audioPlayerConvTasNet.load(); // Load the selected audio file using the audio player
+            audioSourceLowArousal.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/asru2025_durmodel/files/msppod/durmodel/arous1/" + selectedAudio + ".wav";
+            audioPlayerLowArousal.load(); // Load the selected audio file using the audio player
 
-            audioSourceCDiffuSE.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/cdiffuse/" + selectedAudio + ".wav";
-            audioPlayerCDiffuSE.load(); // Load the selected audio file using the audio player
+            audioSourceMedArousal.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/asru2025_durmodel/files/msppod/durmodel/arous4/" + selectedAudio + ".wav";
+            audioPlayerMedArousal.load(); // Load the selected audio file using the audio player
 
-            audioSourceDemucs.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/demucs/" + selectedAudio + ".wav";
-            audioPlayerDemucs.load(); // Load the selected audio file using the audio player
-
-            audioSourceSGMSE.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/sgmse/" + selectedAudio + ".wav";
-            audioPlayerSGMSE.load(); // Load the selected audio file using the audio player
-
-            audioSourceClean.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/clean/" + selectedAudio + ".wav";
-            audioPlayerClean.load(); // Load the selected audio file using the audio player
+            audioSourceHighArousal.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/asru2025_durmodel/files/msppod/durmodel/arous7/" + selectedAudio + ".wav";
+            audioPlayerHighArousal.load(); // Load the selected audio file using the audio player
 
             // This will ensure that the audio players are updating their children source elements
             // and reloading them
@@ -250,32 +235,32 @@ layout: default
 </script>
 <br>
 
-<h2>
+<!-- <h2>
     Youtube embedding 
 </h2>
 
 <div class="video-container">
     <iframe src="https://www.youtube.com/embed/H5FiO0JxPK4" frameborder="0" allowfullscreen></iframe>
-</div>
+</div> -->
 
-<br>
+<!-- <br> -->
 
 <h2 id="citation">
     Citation
 </h2>
 
 <div class="container">
-    <div class="inner-container" dir="auto" data-snippet-clipboard-copy-content="{% raw %}@inproceedings{richter2024ears,
-    title={{EARS}: An Anechoic Fullband Speech Dataset Benchmarked for Speech Enhancement and Dereverberation},
-    author={Richter, Julius and Wu, Yi-Chiao and Krenn, Steven and Welker, Simon and Lay, Bunlong and Watanabe, Shinjii and Richard, Alexander and Gerkmann, Timo},
-    booktitle={ISCA Interspeech},
-    year={2024}
+    <div class="inner-container" dir="auto" data-snippet-clipboard-copy-content="{% raw %}@inproceedings{rajprabhu2025durmodel,
+    title={Enhancing In-the-Wild Speech Emotion Conversion with Resynthesis-based Duration Modeling},
+    author={Raj Prabhu, Navin and de Oliveira, Danilo and Lehmann-Willenbrock, Nale and Gerkmann, Timo},
+    booktitle={IEEE ASRU},
+    year={2025}
 }{% endraw %}">
-<pre><code>{% raw %}@inproceedings{richter2024ears,
-    title={{EARS}: An Anechoic Fullband Speech Dataset Benchmarked for Speech Enhancement and Dereverberation},
-    author={Richter, Julius and Wu, Yi-Chiao and Krenn, Steven and Welker, Simon and Lay, Bunlong and Watanabe, Shinjii and Richard, Alexander and Gerkmann, Timo},
-    booktitle={ISCA Interspeech},
-    year={2024}
+<pre><code>{% raw %}@inproceedings{rajprabhu2025durmodel,
+    title={Enhancing In-the-Wild Speech Emotion Conversion with Resynthesis-based Duration Modeling},
+    author={Raj Prabhu, Navin and de Oliveira, Danilo and Lehmann-Willenbrock, Nale and Gerkmann, Timo},
+    booktitle={IEEE ASRU},
+    year={2025}
 }{% endraw %}</code></pre>
     </div>
     <button id="copyButton" class="highlight">
@@ -296,17 +281,17 @@ layout: default
     });
 </script>
 
-<br>
+<!-- <br>
 
 <h2>
     References
-</h2>
+</h2> -->
 
-<ol id="refList" style="list-style-type: none; padding: 0;">
+<!-- <ol id="refList" style="list-style-type: none; padding: 0;"> -->
     <!-- JavaScript will populate this list -->
-</ol>
+<!-- </ol> -->
 
-<script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", function () {
         const references = {
             "convtasnet": "Y. Luo and N. Mesgarani, “Conv-TasNet: Surpassing ideal time–frequency magnitude masking for speech separation,” IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 27, no. 8, pp. 1256–1266, 2019.",
@@ -421,4 +406,4 @@ layout: default
         });
 
     });
-</script>
+</script> -->

@@ -18,11 +18,11 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Speech Emotion Conversion using Generative Neural Networks
+title: Enhancing In-the-Wild Speech Emotion Conversion with Resynthesis-based Duration Modeling
 logo: /assets/img/uhh_logo.svg
 email: # your email address
 description: >- # this means to ignore newlines until "baseurl:"
-  A research website showcasing speech emotion conversion using generative neural networks. Includes audio samples demonstrating emotion transformation in speech, project details, and related resources.
+  A research website showcasing speech emotion conversion audio examples, based on the paper titled "Enhancing In-the-Wild Speech Emotion Conversion with Resynthesis-based Duration Modeling" and presented at ASRU 2025. Includes audio samples demonstrating emotion transformation in speech, project details, and related resources.
 domain: sp-uhh.github.io
 baseurl: "/emoconv-gen/" # the subpath of your site, e.g. /blog
 url: "https://sp-uhh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
